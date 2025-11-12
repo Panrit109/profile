@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio นักศึกษา | Panrit Wu</title>
+
+  <!-- ฟอนต์ Prompt -->
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- เพิ่มไอคอน -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Prompt', sans-serif;
+      background: linear-gradient(135deg, #eaf0f7 0%, #dbe5f0 50%, #f7f9fc 100%);
+      color: #222;
+      overflow-x: hidden;
+    }
+
+    header {
+      background: linear-gradient(120deg, #0a3d62, #1e5fab, #4a90e2);
+      color: white;
+      text-align: center;
+      padding: 4rem 1rem 6rem;
+      border-radius: 0 0 80px 80px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      top: -80px;
+      left: -80px;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at center, rgba(255,255,255,0.15), transparent 60%);
+      animation: rotateGlow 10s linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes rotateGlow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      position: relative;
+      z-index: 1;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.95;
+      margin-top: 0.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: -4rem auto 4rem;
+      padding: 0 1rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    section {
+      background: #fff;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    section::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(30,95,171,0.08) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    section:hover::before {
+      opacity: 1;
+    }
+
+    section:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    section h2 {
+      color: #1e5fab;
+      font-size: 1.5rem;
+      border-left: 6px solid #0a3d62;
+      padding-left: 12px;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    /* แนะนำตัว */
+    #intro {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .profile-pic {
+      flex: 0 0 190px;
+      width: 190px;
+      height: 190px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid #1e5fab;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .profile-pic:hover {
+      transform: scale(1.07);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    }
+
+    .intro-text {
+      flex: 1;
+      min-width: 260px;
+    }
+
+    ul {
+      list-style-type: "• ";
+      margin-left: 1.5rem;
+      color: #333;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    a {
+      color: #1e5fab;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    a:hover {
+      color: #0a3d62;
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: #777;
+      font-size: 0.95rem;
+      border-top: 1px solid #ccc;
+      background: linear-gradient(120deg, #f4f6f8, #eaf0f7);
+    }
+
+    /* ปุ่มลิงก์ */
+    .btn-link {
+      display: inline-block;
+      margin-top: 1rem;
+      background: linear-gradient(120deg, #1e5fab, #3a89e8);
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border-radius: 30px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(30,95,171,0.3);
+    }
+
+    .btn-link:hover {
+      background: linear-gradient(120deg, #0a3d62, #1e5fab);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(30,95,171,0.4);
+    }
+
+    @media (max-width: 700px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      #intro {
+        flex-direction: column;
+        text-align: center;
+      }
+      .profile-pic {
+        margin-bottom: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Portfolio พันฤทธิ์ วู</h1>
+    <p>นักศึกษาสาขาวิทยาการคอมพิวเตอร์ | มหาวิทยาลัยราชภัฏอุดรธานี</p>
+  </header>
+
+  <main>
+    <!-- ส่วนแนะนำตัว -->
+    <section id="intro">
+      <img src="fiw.jpg" alt="รูปโปรไฟล์ของนายปัญฤทธิ์ วู" class="profile-pic">
+
+      <div class="intro-text">
+        <h2><i class="bi bi-person-circle"></i> 1. แนะนำตัว (Introduction)</h2>
+        <p><strong>ชื่อ:</strong> นายปัญฤทธิ์ วู (Panrit Wu)</p>
+        <p><strong>คณะ:</strong> วิทยาศาสตร์ สาขาวิทยาการคอมพิวเตอร์</p>
+        <p><strong>สถานศึกษา:</strong> มหาวิทยาลัยราชภัฏอุดรธานี</p>
+        <p><strong>ปีการศึกษา:</strong> ชั้นปีที่ 3</p>
+        <p><strong>ความสนใจ:</strong> ปัญญาประดิษฐ์ (AI)</p>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2><i class="bi bi-cpu"></i> 2. ทักษะ (Skills)</h2>
+      <ul>
+        <li><strong>Programming:</strong> Java, HTML/CSS, PHP, JavaScript</li>
+        <li><strong>AI & Data:</strong> SQL, Python (พื้นฐาน)</li>
+        <li><strong>Tools:</strong> Git, VS Code, Figma</li>
+        <li><strong>Soft Skills:</strong> การสื่อสาร, การทำงานเป็นทีม, การแก้ปัญหา</li>
+      </ul>
+    </section>
+
+    <section id="projects">
+      <h2><i class="bi bi-folder2-open"></i> 3. ผลงาน (Projects)</h2>
+      <ul>
+        <li>🌐 เว็บไซต์จองตั๋วชมภาพยนตร์ออนไลน์</li>
+        <li>🤖 ระบบวิเคราะห์การนอนของสัตว์</li>
+        <li>🛍️ เว็บไซต์ร้านค้าออนไลน์ (Responsive)</li>
+      </ul>
+      
+    </section>
+
+    <section id="education">
+      <h2><i class="bi bi-mortarboard"></i> 4. การศึกษา (Education)</h2>
+      <p>🎓 มหาวิทยาลัยราชภัฏอุดรธานี (2566 - ปัจจุบัน)</p>
+      <p>คณะวิทยาศาสตร์ สาขาวิทยาการคอมพิวเตอร์</p>
+      <p>🏫 โรงเรียนหนองคายวิทยาคาร (มัธยม)</p>
+      <p>🏫 โรงเรียนอนุบาลสาริกา (ประถม/อนุบาล)</p>
+    </section>
+
+    <section id="activities">
+      <h2><i class="bi bi-trophy"></i> 5. กิจกรรมและรางวัล (Activities / Achievements)</h2>
+      <ul>
+        <li>🏅 เข้าร่วมการแข่งขันกีฬาราชภัฏ</li>
+        <li>👑 เข้าประกวดเดือนมหาวิทยาลัย</li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h2><i class="bi bi-envelope-paper"></i> 6. ติดต่อ (Contact)</h2>
+      <p><strong>Email:</strong> <a href="mailto:66040233109@udru.ac.th">66040233109@udru.ac.th</a></p>
+      <p><strong>GitHub:</strong> <a href="https://github.com/Panrit109" target="_blank">github.com/Panrit109</a></p>
+      <p><strong>จังหวัด:</strong> หนองคาย</p>
+    </section>
+
+    <section id="goal">
+      <h2><i class="bi bi-bullseye"></i> 7. เป้าหมายอาชีพ (Career Goal)</h2>
+      <p>มุ่งมั่นที่จะทำงานในสายอาชีพด้านเทคโนโลยีสารสนเทศ โดยเฉพาะงานที่เกี่ยวข้องกับปัญญาประดิษฐ์ (AI) และพัฒนาซอฟต์แวร์ให้เกิดประโยชน์ต่อสังคม</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 | Portfolio โดย <strong>Panrit Wu</strong> | วิทยาการคอมพิวเตอร์ มรภ.อุดรธานี</p>
+  </footer>
+</body>
+</html>
